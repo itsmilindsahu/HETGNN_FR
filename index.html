@@ -3,92 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HETGNN-FR | Milind Sahu</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
+
+:root{
+    --bg:#0f172a;
+    --card:#111827;
+    --accent:#3b82f6;
+    --accent2:#8b5cf6;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+}
+
+*{
     margin:0;
-    background:#f4f4f4;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
+    padding:40px;
+    position:relative;
 }
 
-header{
-    background:#111827;
-    color:white;
-    padding:40px 20px;
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,var(--accent),transparent);
+    opacity:0.15;
+    filter:blur(120px);
 }
 
-.container{
+.hero-content{
     max-width:1000px;
-    margin:auto;
-    padding:20px;
+    z-index:1;
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    margin-top:20px;
+.badge{
+    display:inline-block;
+    background:rgba(59,130,246,0.15);
+    border:1px solid rgba(59,130,246,.4);
+    padding:8px 16px;
+    border-radius:999px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(3rem,8vw,6rem);
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#60a5fa,#8b5cf6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:1.2rem;
+    line-height:1.8;
+    max-width:800px;
+    margin:auto;
+}
+
+.author{
+    margin-top:25px;
+    color:#cbd5e1;
+}
+
+.buttons{
+    margin-top:40px;
 }
 
 .btn{
     display:inline-block;
-    padding:12px 24px;
-    background:#2563eb;
-    color:white;
+    padding:14px 28px;
+    border-radius:12px;
     text-decoration:none;
-    border-radius:8px;
     margin:10px;
-    font-weight:bold;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
 }
 
 .btn:hover{
-    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.section{
+    padding:100px 10%;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+.section-sub{
+    color:var(--muted);
+    margin-bottom:50px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    padding:30px;
+    border-radius:24px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.stat{
+    text-align:center;
+    padding:35px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.04);
+}
+
+.stat-number{
+    font-size:2.5rem;
+    font-weight:800;
+    color:#60a5fa;
+}
+
+.stat-label{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+.pdf-container{
+    margin-top:50px;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
 iframe{
     width:100%;
-    height:800px;
+    height:900px;
     border:none;
-    margin-top:20px;
 }
+
+footer{
+    text-align:center;
+    padding:50px;
+    color:var(--muted);
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:768px){
+
+iframe{
+height:600px;
+}
+
+}
+
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>HETGNN-FR</h1>
-    <h2>Fraud Ring Detection Using Heterogeneous Graph Neural Networks</h2>
-    <p>Milind Sahu | IISER Tirupati</p>
-</header>
+<section class="hero">
 
-<div class="container">
+<div class="hero-content">
+
+<div class="badge">
+Research Project • Graph Machine Learning
+</div>
+
+<h1>
+<span class="gradient">HETGNN-FR</span>
+</h1>
+
+<p class="subtitle">
+Fraud Ring Detection Using Heterogeneous Graph Neural Networks.
+A graph-based framework that combines Heterogeneous Graph Transformers,
+temporal encoding, and ring-level classification to identify coordinated
+financial fraud operations.
+</p>
+
+<div class="author">
+Milind Sahu • BS-MS Mathematics • IISER Tirupati
+</div>
+
+<div class="buttons">
+
+<a href="HETGNN_FR_V05.pdf"
+class="btn primary"
+target="_blank">
+Read Paper
+</a>
+
+<a href="https://github.com/YOUR_USERNAME/YOUR_REPO"
+class="btn secondary"
+target="_blank">
+Source Code
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Key Contributions</h2>
+
+<div class="grid">
 
 <div class="card">
-    <h2>Research Paper</h2>
+<h3>🧠 Heterogeneous GNN</h3>
+<p>
+Models accounts, devices, merchants, and IP addresses
+within a unified graph structure.
+</p>
+</div>
 
-    <p>
-        HETGNN-FR is a graph-based fraud detection framework that identifies
-        coordinated fraud rings using Heterogeneous Graph Transformers and
-        temporal encoding techniques.
-    </p>
+<div class="card">
+<h3>⏳ Temporal Encoding</h3>
+<p>
+Time2Vec representations capture temporal clustering
+patterns frequently observed in coordinated fraud.
+</p>
+</div>
 
-    <a class="btn" href="HETGNN_FR_V05.pdf" target="_blank">
-        Open PDF
-    </a>
+<div class="card">
+<h3>🔍 Ring Discovery</h3>
+<p>
+Sliding-window graph extraction discovers hidden fraud
+rings instead of isolated suspicious transactions.
+</p>
+</div>
 
-    <a class="btn" href="HETGNN_FR_V05.pdf" download>
-        Download PDF
-    </a>
-
-    <iframe src="HETGNN_FR_V05.pdf"></iframe>
-
+<div class="card">
+<h3>📊 Explainability</h3>
+<p>
+Provides interpretable signals through shared
+infrastructure analysis and suspicious edge scoring.
+</p>
 </div>
 
 </div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Research Highlights</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-number">0.863</div>
+<div class="stat-label">Mean Ring AUC</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">1.00</div>
+<div class="stat-label">Fraud Recall</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">4</div>
+<div class="stat-label">Node Types</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">8+</div>
+<div class="stat-label">Injected Fraud Rings</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Read the Paper</h2>
+
+<p class="section-sub">
+The complete research report is embedded below.
+</p>
+
+<div class="pdf-container">
+<iframe src="HETGNN_FR_V05.pdf"></iframe>
+</div>
+
+</section>
+
+<footer>
+
+<h3>Milind Sahu</h3>
+<p>
+BS-MS Mathematics • IISER Tirupati
+</p>
+
+<br>
+
+<p>
+HETGNN-FR © 2025
+</p>
+
+</footer>
 
 </body>
 </html>
